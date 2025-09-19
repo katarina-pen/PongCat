@@ -36,7 +36,8 @@ class Paddel
     end
 
     def draw
-      @image.draw(@x,@y, 1, 0.1, 1.0) 
+      # @image.draw(@x,@y, 1, 0.1, 1.0) 
+      @image.draw(@x,@y, 1, 1, 1) 
     end
 
     #rörelser
