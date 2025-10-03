@@ -1,6 +1,6 @@
 class Paddel
 
-    attr_reader :left, :right, :top, :bottom
+    attr_reader 
 
     def initialize (image,x, y)
       @image = Gosu::Image.new(image)
@@ -9,14 +9,22 @@ class Paddel
       @vel_x = [-2,-1,1,2].sample
       @vel_y = [-2,-1,1,2].sample
 
-      @left = @x 
-      @right = @x + 100
-      @top = @y 
-      @bottom = @y + 100
     end
 
-    def left
+      def left
       @x
+    end
+
+    def right 
+      @x + @image.width
+    end
+
+    def top
+      @y
+    end
+
+    def bottom
+      @y + @image.height
     end
 
     def update

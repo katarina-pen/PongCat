@@ -1,6 +1,6 @@
 class Ball
 
-    attr_reader :right, :top, :bottom, :vel_x, :vel_y
+    attr_reader :vel_x, :vel_y
 
 
     def initialize (image,x, y)
@@ -10,19 +10,22 @@ class Ball
       @vel_x = [-2,-1,1,2].sample
       @vel_y = [-2,-1,1,2].sample
 
-      @left = @x 
-      @right = @x + 100
-      @top = @y 
-      @bottom = @y + 100
     end
 
-    
     def left
       @x
     end
 
-    def right
-      @x + 20
+    def right 
+      @x + @image.width
+    end
+
+    def top
+      @y
+    end
+
+    def bottom
+      @y + @image.height
     end
 
     def update
