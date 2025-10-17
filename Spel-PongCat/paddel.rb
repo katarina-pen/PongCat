@@ -1,4 +1,6 @@
-class Paddel
+require_relative 'classes'
+
+class Paddel < AllClasses
 
     attr_reader 
 
@@ -11,37 +13,21 @@ class Paddel
 
     end
 
-      def left
-      @x
-    end
-
-    def right 
-      @x + @image.width
-    end
-
-    def top
-      @y
-    end
-
-    def bottom
-      @y + @image.height
-    end
-
     def update
-      # @x += @vel_x
-      # @y += @vel_y
       # @x += @vel_x
       # @y += @vel_y
 
      if @x > 800 || @x < 0 || @x >800-100
-       @vel_x*=-1
+       bounce(:x)
      end
 
      if @y > 600 || @y < 0 || @y >600-100
-       @vel_y*=-1
+       bounce(:x)
      end
 
     end
+
+
 
     def draw
       # @image.draw(@x,@y, 1, 0.1, 1.0) 

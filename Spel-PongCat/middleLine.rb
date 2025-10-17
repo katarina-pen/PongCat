@@ -1,4 +1,6 @@
-class Middle
+require_relative 'classes'
+
+class Middle < AllClasses
 
   def initialize (image,x, y)
         @image = Gosu::Image.new(image)
@@ -6,22 +8,6 @@ class Middle
         @y = y
   
   end
-
-  def left
-      @x
-    end
-
-    def right 
-      @x + @image.width
-    end
-
-    def top
-      @y
-    end
-
-    def bottom
-      @y + @image.height
-    end
 
   def update
 

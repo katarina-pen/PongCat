@@ -3,6 +3,7 @@ require_relative 'ball'
 require_relative 'paddel'
 require_relative 'middleLine'
 
+
 class Game < Gosu::Window
    def initialize
       super 800, 600 
@@ -17,7 +18,8 @@ class Game < Gosu::Window
 
       # det som ligger lite emellan :)
       @middle = Middle.new("media/catPics/longcat(50x600.jpg", 375, 0)
-      @x = 0 #fönstrets x värde
+      @xLeft = 0 #fönstrets x värde på vänster sida
+      @xRight = 750 #fönstrets x värde på höger sida
       # @y = 800 #fönstrets y värde
       @player1points = 0
       @player2points = 0
@@ -63,16 +65,30 @@ class Game < Gosu::Window
          
       end
 
+      #Bounce för middle line
+      if @paddel.right >= @middle.left
+         puts "yay"
+         # @paddel.bounce(:x)
+         
+         else
+
+      end
+
       # poängsystem!!
-      if @ball.left <= @x 
+      if @ball.left <= @xLeft 
          puts "Player right(2) got a point!"
          @player2points += 1
       end
 
-       if @ball.right <= @x+self.width 
+      if @ball.right >= @xRight 
          puts "Player left(1) got a point!"
          @player1points += 1
       end
+
+      #  if @ball.right <= @x+self.width 
+      #    puts "Player left(1) got a point!"
+      #    @player1points += 1
+      # end
 
 
 
@@ -119,7 +135,8 @@ class Game < Gosu::Window
       @paddel2.draw
       @middle.draw
 
-      @font ||= Gosu::Font.new(20)  # skapar fonten/typsnittet EN gång och behöver inte skapa ett nytt objekt varje frame som med bara draw_text metoden
+      @font ||= Gosu::Font.new(20)  # skapar fonten/typsnittet EN gång 
+      #och behöver inte skapa ett nytt objekt varje frame som med bara draw_text metoden
       @font.draw_text("Points=#{@player1points}", 10, 10, 1, 1, 1, 0xff_ffffff)
       @font.draw_text("Points=#{@player2points}", 700, 10, 1, 1, 1, 0xff_ffffff)
       
